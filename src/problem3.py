@@ -179,6 +179,7 @@ def problem3a(r, s):
             total = total + (r + k)
     return total
 
+
 def run_test_problem3b():
     """ Tests the   problem3b   function. """
     print()
