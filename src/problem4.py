@@ -3,8 +3,8 @@ Exam 1, problem 4.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Parker Jordan.
+"""  # Done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -74,6 +74,32 @@ def problem4(number_of_stairs, step_size, starting_point, window):
     #            of the stair steps.
     # -------------------------------------------------------------------------
 
+    starting_point.attach_to(window)
+
+    x1 = rg.Point(starting_point.x, starting_point.y - step_size)
+    x2 = rg.Point(starting_point.x + step_size, starting_point.y - step_size)
+    for k in range(number_of_stairs + 1):
+        line_b = rg.Line(x1, x2)
+        line_b.thickness = 3
+        x1 = rg.Point(starting_point.x + (k * step_size), starting_point.y - ((k + 1) * step_size))
+        x2 = rg.Point(starting_point.x + ((k + 1) * step_size), starting_point.y - ((k + 1) * step_size))
+        line_b.attach_to(window)
+        window.render()
+
+    x3 = rg.Point(starting_point.x, starting_point.y)
+    x4 = rg.Point(starting_point.x, starting_point.y - step_size)
+    for k in range(number_of_stairs):
+        line_m = rg.Line(x3, x4)
+        line_m.thickness = 3
+        line_m.color = 'Magenta'
+        x3 = rg.Point(starting_point.x + ((k + 1) * step_size), starting_point.y - ((k + 1) * step_size))
+        x4 = rg.Point(starting_point.x + ((k + 1) * step_size), starting_point.y - ((k + 2) * step_size))
+        line_m.attach_to(window)
+        window.render()
+
+    last_point = rg.Point(starting_point.x + ((number_of_stairs + 1) * step_size), starting_point.y + ((number_of_stairs + 1) * step_size))
+    last_point.attach_to(window)
+    window.render()
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
